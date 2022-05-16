@@ -1,0 +1,103 @@
+const peopleBase = [
+  {
+    "id": 1,
+    "name": "cerulean",
+    "img": require("front-end/images/temp/avatar-1.jpg"),
+    "price": "155 000 - 180 000",
+    "place": "Moskow",
+    "type": "it",
+    "experience": "15 лет 11 месяцев",
+    "exp-type": "Professional",
+    "coords":[55.70,37.520],
+    "age": 52,
+    "lastworktype": "Директор по продажам",
+    "lastworkname": "ООО Ромашка Интертеймент",
+    "worktime":"Октябрь 2016 - Август 2021",
+    "jobtype": "П/Самозанятый",
+    "medbook": true
+
+  },
+  {
+    "id": 2,
+    "name": "cerulean",
+    "img": require("front-end/images/temp/avatar-1.jpg"),
+    "price": "30 000 - 50 000",
+    "place": "Moskow",
+    "type": "it",
+    "experience": "15 лет 11 месяцев",
+    "exp-type": "Professional",
+    "coords":[55.71,37.521],
+    "age": 37,
+    "lastworktype": "Директор по курьерам",
+    "lastworkname": "ООО Ромашка Интертеймент",
+    "worktime":"Октябрь 2016 - Август 2021",
+    "jobtype": "П/Самозанятый",
+    "medbook": false
+  },
+  {
+    "id": 3,
+    "name": "nikole",
+    "price": 3000,
+    "place": "Orel",
+    "type": "barmen",
+    "experience": 5,
+    "exp-type": "junior",
+    "coords":[55.72,37.522],
+  },
+  {
+    "id": 4,
+    "name": "stas",
+    "price": 3000,
+    "place": "Orel",
+    "type": "barmen",
+    "experience": 5,
+    "exp-type": "Senior",
+    "coords":[55.73,37.523],
+  },
+  {
+    "id": 5,
+    "name": "elena",
+    "price": 1000,
+    "place": "Piter",
+    "type": "actor",
+    "experience": 2,
+    "exp-type": "Senior",
+    "coords":[55.74,37.524],
+
+  },
+  {
+    "id": 6,
+    "name": "santa",
+    "price": 5200,
+    "place": "Kazan",
+    "type": "seo",
+    "experience": 8,
+    "exp-type": "junior",
+    "coords":[55.75,37.525],
+
+  },
+  {
+    "id": 7,
+    "name": "bink",
+    "price": 5300,
+    "place": "Sochi",
+    "type": "actor",
+    "experience": 6,
+    "exp-type": "Senior",
+    "coords":[55.76,37.526],
+
+  },
+  {
+    "id": 8,
+    "name": "osoka",
+    "price": 5000,
+    "place": "Adler",
+    "type": "it",
+    "experience": 8,
+    "exp-type": "junior",
+    "coords":[55.77,37.527],
+
+  },
+]
+
+export default peopleBase
