@@ -24,6 +24,7 @@ const Nav = () => {
             <li><Link className={(pathMathRoute('/cabinet/') ? 'active' : '')} to="/cabinet/">Кабинет</Link></li>
             <li><Link className={(pathMathRoute('/catalog') ? 'active' : '')} to="/catalog">Каталог</Link></li>
             <li><Link className={(pathMathRoute('/map') ? 'active' : '')} to="/map">Карта</Link></li>
+            <li><Link className={(pathMathRoute('/list') ? 'active' : '')} to="/list">Список</Link></li>
           </ul>
         </nav>
       </>

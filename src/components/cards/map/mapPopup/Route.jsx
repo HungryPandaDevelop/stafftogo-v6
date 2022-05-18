@@ -1,20 +1,27 @@
-import { useState, useContext } from "react"
-// import MapGoContext from 'context/MapGoContext'
+import { useState, } from "react"
 
-const Route = ({ setRoute }) => {
 
-  // const { routeTypeState, onChangeTypeState } = useContext(MapGoContext)
+const Route = ({ setRouteFirst, setRouteByChangeType }) => {
+
 
   const routeChecknox = ['car', 'bus', 'walk'];
+  const [routeCheckboxType, setRouteCheckboxType] = useState(0)
+  const [routeboxState, setRouteboxState] = useState(false);
 
-  const [routeboxState, setRouteboxState] = useState(false)
 
   const showRoutebox = (e) => {
-    e.preventDefault()
-    setRouteboxState(!routeboxState);
-    setRoute();
+    e.preventDefault(); // Выкл
+    setRouteboxState(!routeboxState); // состояние плашки маршрту
+    setRouteFirst(); // построить маршрут
   }
-  //   
+
+
+  const changeInTypeRoute = (index) => {
+    // тип маршрута
+    setRouteCheckboxType(index); // состояние для иконок внутрки комп
+    setRouteByChangeType(index); // состояние для карты
+  }
+
 
   return (
     <div className="route-map">
@@ -46,11 +53,11 @@ const Route = ({ setRoute }) => {
                 <div
                   key={index}
                   className={`checkbox-route-item checkbox-route-${item}`}
-                // onClick={() => { onChangeTypeState(index) }}
+                  onClick={() => { changeInTypeRoute(index); }}
                 >
                   <i className={`${item}-ico`}></i>
                   <hr />
-                  {/* <span className={index === routeTypeState ? "checkbox-route--active" : ""}></span> */}
+                  <span className={index === routeCheckboxType ? "checkbox-route--active" : "checkbox-route"}></span>
                 </div>
               ))}
             </div>

@@ -31,11 +31,16 @@ import ResumeNew from 'pages/cabinet/applicants/resume/ResumeNew';
 import ResumeEdit from 'pages/cabinet/applicants/resume/ResumeEdit';
 // Страницы кабинет Соискателя
 
+// Страницы Елементов Вакансии\ Резюме
+import Catalog from 'pages/cards/Catalog';
+// import List from 'pages/catalog/List';
+// Страницы Елементов Вакансии\ Резюме
 
-import Catalog from 'pages/Catalog';
-import List from 'pages/List';
-import Detail from 'pages/Detail';
-import Map from 'pages/MapGo';
+
+// import Catalog from 'pages/Catalog';
+// import ListOld from 'pages/List';
+// import Detail from 'pages/Detail';
+import Map from 'pages/cards/MapGo';
 
 
 const App = () => {
@@ -68,10 +73,14 @@ const App = () => {
         
 
 
-          <Route path='/catalog' element={<Catalog/>}></Route>
-          <Route path='/catalog/:catagoryName' element={<List/>}></Route>
-          <Route path='/catalog/:catagoryName/:elementId' element={<Detail/>}></Route>
+{/*  Страницы временные  */}
+          {/* <Route path='/catalog' element={<Catalog/>}></Route> */}
+          {/* <Route path='/catalog/:catagoryName' element={<ListOld/>}></Route> */}
+          {/* <Route path='/catalog/:catagoryName/:elementId' element={<Detail/>}></Route> */}
+{/*  Страницы временные  */}
 
+
+          <Route path='/catalog' element={<Catalog/>}></Route>
           <Route path='/map' element={<Map/>}></Route>
 
 
