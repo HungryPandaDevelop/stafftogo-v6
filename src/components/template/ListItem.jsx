@@ -11,7 +11,7 @@ const ListItem = (props) => {
 
   let normalDate = new Date(listing.timestamp.seconds).toLocaleString('en-GB', { timeZone: 'UTC' });
 
-  console.log(listing.timestamp);
+
   return (
     <div className="resume-header vacancies-item">
       <div className="main-grid">
@@ -23,9 +23,9 @@ const ListItem = (props) => {
             <div className="resume-face-container">
               <div
                 className="resume-face img-cover"
-                style={{ backgroundImage: `url(${listing.userInfo.imgCompany})` }}
+                style={{ backgroundImage: `url(${listing.userInfo.imgsAccount})` }}
               >
-                <img src={listing.userInfo.imgCompany} alt="" />
+                <img src={listing.userInfo.imgsAccount} alt="" />
               </div>
             </div>
           </div>
@@ -34,9 +34,9 @@ const ListItem = (props) => {
         <div className="col-5">
           <div className="resume-info">
             <h2>
-              <Link to={link}>
+              {/* <Link to={link}>
                 {listing.card_name}
-              </Link>
+              </Link> */}
             </h2>
             <div className="vacancies-price">
               {listing.salary_priceFrom && `Р ${listing.salary_priceFrom}`}
@@ -47,12 +47,13 @@ const ListItem = (props) => {
             </div>
           </div>
         </div>
+
         <div className="col-5">
           <div className="resume-info resume-info--more">
             <div className="resume-delimentr"></div>
             <h2>{listing.userInfo && listing.userInfo.name_company}</h2>
             <ul className="ln">
-              {listing.userInfo && <li> <a href="/"><i className="phone-ico--black"></i><span>{listing.userInfo.phones_main}</span></a></li>}
+              {listing.userInfo && <li><a href="/"><i className="phone-ico--black"></i><span>{listing.userInfo.phones_main}</span></a></li>}
               {listing.userInfo && <li><a href="/"><i className="mail-ico--black"></i><span>{listing.userInfo.email}</span></a></li>}
               <li><a href="/"><i className="marker-ico--black"></i><span>Показать на карте</span></a></li>
             </ul>

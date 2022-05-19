@@ -3,8 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 import { getListing, onDelete } from 'store/asyncActions/getListing';
 
-
-import ListItem from 'components/template/ListItem';
+import CardItemResume from 'components/template/cards/CardItemResume';
 
 import TemplateAccount from 'components/template/TemplateAccount';
 
@@ -40,31 +39,24 @@ const Vacancies = (props) => {
   }
 
   const contentPage = () => {
-    console.log('loading', listings)
     return (
       <>
         {!loading && listings.length > 0 && (
           <>
             {
               listings.map((listing) => (
-                <ListItem
-                  key={listing.id}
-                  listing={listing.data}
-                  id={listing.id}
-                  onDelete={() => deleteItem(listings, listing.id)}
-                  onEdit={() => onEdit(listing.id)}
-                  name={listing.vacancies_name}
-                  solary={[listing.salary_priceFrom, listing.salary_priceTo]}
-                  nameCompany={props.getInfoAccount && props.getInfoAccount.name_company}
-                  imgCompany={props.getInfoAccount && props.getInfoAccount.imgCompany}
-                  phoneCompany={props.getInfoAccount && props.getInfoAccount.phones_main}
-                  mailCompany={props.getInfoAccount && props.getInfoAccount.email}
-                />
+                <div key={listing.id}>
+                  <CardItemResume
+                    listing={listing.data}
+                    id={listing.id}
+                    onEdit={() => onEdit(listing.id)}
+                    onDelete={() => deleteItem(listings, listing.id)}
+                  />
+                </div>
               ))
             }
           </>
         )}
-
       </>
     )
   }

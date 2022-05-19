@@ -2,7 +2,7 @@ export default function(){
   return {
     order: [
       "titleOne",
-      "name",
+      "card_name",
       "salary",
       "typeJob",
       "titleTwo",
@@ -93,9 +93,9 @@ export default function(){
         },
       ],
     },
-    name:{
+    card_name:{
       type:"text", 
-      name: "name",  
+      name: "card_name",  
       placeholder: "Желаемая должность", 
       label:"Желаемая должность", 
     },
@@ -146,7 +146,7 @@ export default function(){
     },
     education: { 
       type:"checkbox", 
-      name: "typeEmployer",
+      name: "typeEducation",
       options: [
         { label: 'Среднее', value: 'type1' },
         { label: 'Неоконченное высшее', value: 'type2' },

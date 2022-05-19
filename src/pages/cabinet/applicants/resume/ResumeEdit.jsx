@@ -7,7 +7,7 @@ import RenderFormAccount from 'components/cabinet/forms/RenderFormAccount';
 
 import { useParams } from 'react-router-dom';
 
-
+import { getUserInfo } from 'store/asyncActions/getUserInfo';
 import { getInfoForEdit } from 'store/asyncActions/getInfoForEdit';
 import { saveInfo } from 'store/asyncActions/saveInfo';
 
@@ -15,6 +15,7 @@ import { saveInfo } from 'store/asyncActions/saveInfo';
 const ResumeEdit = (props) => {
 
   const [getInfo, setGetInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({});
   const params = useParams();
 
   // console.log('params.elementId', params.elementId)
@@ -22,7 +23,10 @@ const ResumeEdit = (props) => {
 
   useEffect(() => {
     // props.getInfoVacanciesAction(params.elementId);
-
+    getUserInfo().then(res => {
+      console.log('get-user-info', res)
+      setUserInfo(res.data);
+    });
     getInfoForEdit(params.elementId, 'resume').then(res => {
       setGetInfo(res);
     });
@@ -32,8 +36,9 @@ const ResumeEdit = (props) => {
 
   /* сохранение данных пользователя */
   const onSubmitIn = () => {
+    const addUserInfo = { ...props.dataForm.values, userInfo };
     console.log('save in account ', props.dataForm.values)
-    saveInfo(props.dataForm.values, params.elementId, 'resume');
+    saveInfo(addUserInfo, params.elementId, 'resume');
   }
 
   /* сохранение данных пользователя */
@@ -60,7 +65,6 @@ const mapStateToProps = (state) => {
 
   const formReducer = state.form && state.form.singleInput;
 
-  // console.log('state', state)
   return {
     fieldsResume: state.fieldsResume, // база полей
     // getInfoAccount: state.getInfoAccountReducer.getInfoVacancies, // полученные данные с сервера

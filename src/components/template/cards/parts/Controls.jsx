@@ -1,0 +1,39 @@
+
+const Controls = ({ onEdit, onDelete, id, name }) => {
+  return (
+    <div className="btn-container">
+      <div>
+        <div
+          className='btn btn--orange btn--smaill ico-in'
+          onClick={() => onEdit(id)}
+        >
+          <i>
+            <span className="back-ico"><img src="images/icons/edit-black.svg" alt="" /></span>
+            <span className="front-ico"><img src="images/icons/edit-white.svg" alt="" /></span>
+          </i>
+          <span>
+            Редактировать
+          </span>
+        </div>
+      </div>
+      {/* {onDelete && ( */}
+      <div>
+        <div
+          className="btn btn--blue btn--smaill ico-in"
+        // onClick={() => onDelete(listing.id, listing.name)}
+        >
+          <i>
+            <span className="back-ico"><img src="images/icons/trash-black.svg" alt="" /></span>
+            <span className="front-ico"><img src="images/icons/trash-white.svg" alt="" /></span>
+          </i>
+          <span>
+            Удалить
+          </span>
+        </div>
+      </div>
+      {/* )} */}
+    </div>
+  )
+}
+
+export default Controls

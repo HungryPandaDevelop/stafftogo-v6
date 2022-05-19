@@ -80,8 +80,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,
-  {
-    // getInfoVacanciesAction,
-    // saveInfoVacanciesAction
-  })(VacanciesEdit);
+export default connect(mapStateToProps)(VacanciesEdit);

@@ -9,7 +9,7 @@ export default function(){
       "site_company",
       "typeJob",
       "description_company",
-      "imgsCompany",
+      "imgsAccount",
       "num_workers",
       "titleTwo", 
       "legalNameCompany",
@@ -251,9 +251,9 @@ export default function(){
         },
       ],
     },
-    imgsCompany: {
+    imgsAccount: {
       type: "file", 
-      name: "imgCompany", 
+      name: "imgsAccount", 
       label:"Загрузите логотип компании", 
       labelSecond:"(JPG или PNG, вес не более 1 Mb, ширина/высота логотипа не менее 320 px)", 
       typeFile: "img", 

@@ -7,6 +7,7 @@ export default function(){
       "email",
       "phone",
       "statusInSite",
+      "imgsAccount",
       "fio",
       "age",
       "country",
@@ -68,6 +69,16 @@ export default function(){
       name: "country", 
       label: "Гражданство", 
       placeholder: "Гражданство", 
+    },
+    imgsAccount: {
+      type: "file", 
+      name: "imgsAccount", 
+      label:"Загрузите ваше фото", 
+      labelSecond:"(JPG или PNG, вес не более 1 Mb, ширина/высота логотипа не менее 320 px)", 
+      typeFile: "img", 
+      typeUpload:".png, .jpg, .jpeg", 
+      maxSize: 1000000, 
+      textEmpty: "На данный момент фоно не выбрано"
     },
     titleOne: {
       type:"title",
