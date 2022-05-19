@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const CardsInfo = ({ name, education, exp, priceFrom, priceTo, link }) => {
+const CardsInfo = ({ name, education, expFrom, expTo, priceFrom, priceTo, link, educationList }) => {
+
+  const findEducation = education && educationList.filter(item => item.value === education[0]);
+
   return (
     <div className="resume-info">
       <h2>
@@ -13,13 +17,20 @@ const CardsInfo = ({ name, education, exp, priceFrom, priceTo, link }) => {
         {priceTo && ` - ${priceTo}`}
       </div>
       <div>
-        {exp && `Стаж: ` + exp}
+        {expFrom && `Стаж: ` + (expTo - expFrom)}
       </div>
       <div>
-        {exp && `Образование: ` + exp}
+        {education && `Образование: ` + findEducation[0].label}
       </div>
     </div>
   )
 }
 
-export default CardsInfo
+
+const mapStateToProps = (state) => {
+  return {
+    educationList: state.fieldsResume.education.options,
+  }
+}
+
+export default connect(mapStateToProps)(CardsInfo);

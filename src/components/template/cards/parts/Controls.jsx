@@ -16,11 +16,11 @@ const Controls = ({ onEdit, onDelete, id, name }) => {
           </span>
         </div>
       </div>
-      {/* {onDelete && ( */}
+
       <div>
         <div
           className="btn btn--blue btn--smaill ico-in"
-        // onClick={() => onDelete(listing.id, listing.name)}
+          onClick={() => onDelete(id, name)}
         >
           <i>
             <span className="back-ico"><img src="images/icons/trash-black.svg" alt="" /></span>
@@ -31,7 +31,6 @@ const Controls = ({ onEdit, onDelete, id, name }) => {
           </span>
         </div>
       </div>
-      {/* )} */}
     </div>
   )
 }

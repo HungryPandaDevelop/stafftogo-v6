@@ -37,7 +37,7 @@ const ResumeEdit = (props) => {
   /* сохранение данных пользователя */
   const onSubmitIn = () => {
     const addUserInfo = { ...props.dataForm.values, userInfo };
-    console.log('save in account ', props.dataForm.values)
+    //console.log('save in account ', props.dataForm.values)
     saveInfo(addUserInfo, params.elementId, 'resume');
   }
 

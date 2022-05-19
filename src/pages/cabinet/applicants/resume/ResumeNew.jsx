@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -9,11 +9,9 @@ import {
 
 import { connect } from 'react-redux';
 
-import { addResume } from 'store/asyncActions/addResume';
+import { getUserInfo } from 'store/asyncActions/getUserInfo';
 
-// import {
-//   newVacancies
-// } from 'actions';
+import { addResume } from 'store/asyncActions/addResume';
 
 import TemplateAccount from 'components/template/TemplateAccount';
 
@@ -22,6 +20,7 @@ import RenderFormAccount from 'components/cabinet/forms/RenderFormAccount';
 
 const ResumeNew = (props) => {
 
+  const [userInfo, setUserInfo] = useState({});
 
   const auth = getAuth();
   const navigate = useNavigate();
@@ -30,6 +29,10 @@ const ResumeNew = (props) => {
 
   // проверка залогинен ли 
   useEffect(() => {
+
+    getUserInfo().then(res => {
+      setUserInfo(res.data);
+    });
 
     if (isMounted) {
       onAuthStateChanged(auth, (user) => {
@@ -49,8 +52,9 @@ const ResumeNew = (props) => {
   // добовление вакансии
 
   const onSubmitIn = () => {
+    const addUserInfo = { ...props.dataForm.values, userInfo };
     // console.log(props.dataForm.values)
-    addResume(props.dataForm.values);
+    addResume(addUserInfo);
 
   }
 

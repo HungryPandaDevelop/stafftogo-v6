@@ -25,16 +25,18 @@ const ListItem = (props) => {
         <div className="col-5">
           <ResumeInfo
             name={listing.card_name}
-            exp={Number(listing.ageWork_to) - Number(listing.ageWork_from)}
+            expFrom={listing.ageWork_from}
+            expTo={listing.ageWork_to}
             priceFrom={listing.salary_priceFrom}
             priceTo={listing.salary_priceTo}
+            education={listing.typeEducation}
             link={listing.userRef}
           />
         </div>
 
         <div className="col-5">
           <UserInfo
-            name={listing.userInfo.name_company}
+            name={listing.userInfo.fio}
             phone={listing.userInfo.phones_main}
             mail={listing.userInfo.email}
           />
