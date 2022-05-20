@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import ActionFn from 'store/actions';
 
-const Switch = () => {
-  const [showsMarkerType, setShowMarkerType] = useState(true);
+const Switch = (props) => {
+  const [switchState, setSwithState] = useState(false);
+  const changeTypeListing = () => {
+    setSwithState(!switchState);
+
+  }
+  useEffect(() => {
+    if (switchState) {
+      props.ActionFn('CHANGE_LISTING', 'vacancies');
+    } else {
+      props.ActionFn('CHANGE_LISTING', 'resume');
+    }
+  }, [switchState])
+
   return (
     <div className="controls-contaiener col-4 vertical-align">
       <div
-        className={`switch-container ${showsMarkerType ? 'switch-btn--active' : ''}`}
-        onClick={() => { setShowMarkerType(!showsMarkerType) }}
+        className={`switch-container ${switchState ? 'switch-btn--active' : ''}`}
+        onClick={changeTypeListing}
       >
         <span>Резюме</span>
         <div className="switch-btn switch-btn--white">
@@ -18,4 +32,16 @@ const Switch = () => {
   )
 }
 
-export default Switch
+const mapStateToProps = (state) => {
+
+  return {
+    listingType: state.listingTypeReducer
+  }
+}
+
+
+
+export default connect(mapStateToProps,
+  {
+    ActionFn
+  })(Switch);

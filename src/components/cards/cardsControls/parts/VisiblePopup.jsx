@@ -3,7 +3,6 @@ import RewardPopup from "../popupControls/RewardPopup";
 import ExtraFilter from "../popupControls/ExtraFilter";
 
 const VisiblePopup = ({ idVisible, showPopupControls }) => {
-  console.log('in id', idVisible)
   const choisePopup = (id) => {
     switch (id) {
       case 1:

@@ -3,6 +3,7 @@ export default function(){
     order: [
       "titleOne",
       "card_name",
+      "coords",
       "salary",
       "typeJob",
       "titleTwo",
@@ -18,7 +19,12 @@ export default function(){
       "car_exp",
       "trip"
     ],
-
+    coords: { 
+      type:"coords", 
+      name: "coords",  
+      placeholder: "Адрес", 
+      label: "Адрес"
+    },
     titleOne: {
       type:"title",
       label:"Основная информация", 

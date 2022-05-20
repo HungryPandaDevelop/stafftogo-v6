@@ -6,7 +6,6 @@ const TemplateFieldSwitch = (props) => {
 
   const { input, label, options } = props;
 
-
   const [switchStatus, setSwitchStatus] = useState(false);
   const [firstLoad, setFirstLoad] = useState(0);
 

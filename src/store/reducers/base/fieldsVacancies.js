@@ -19,23 +19,10 @@ export default function(){
       "settings"
     ],
     coords: { 
-      type: "multy", 
-      mainname: "coords", 
-      label:"Координаты",  
-      allFields: [
-        { 
-          type:"text", 
-          name: "ltd",  
-          placeholder: "ltd", 
-          length: "col-6"
-        },
-        {
-          type:"text", 
-          name: "lng",  
-          placeholder: "lng", 
-          length: "col-6" 
-        },
-      ],
+      type:"coords", 
+      name: "coords",  
+      placeholder: "Адрес", 
+      label: "Адрес"
     },
     card: { 
       type: "multy", 

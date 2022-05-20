@@ -26,6 +26,8 @@ import RenderInputFileNew from './fields/RenderInputFileNew'; // поле с д�
 
 import RenderInputSelectTrue from './fields/RenderInputSelectTrue'; // поле с селект
 
+import RenderInputCoords from './fields/RenderInputCoords'; // поле с селект
+
 
 
 // --------------------------------------------------------------------
@@ -53,6 +55,16 @@ const TemplateForm = (props) => {
         case 'text':
           return (
             <RenderInputText
+              name={obj.name}
+              placeholder={obj.placeholder}
+              label={obj.label}
+              labelSecond={obj.labelSecond}
+              disabled={obj.disabled}
+            />
+          );
+        case 'coords':
+          return (
+            <RenderInputCoords
               name={obj.name}
               placeholder={obj.placeholder}
               label={obj.label}

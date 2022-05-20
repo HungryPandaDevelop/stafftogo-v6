@@ -11,7 +11,7 @@ const ClientPopup = (props) => {
     props.ActionFn('SHOW_POPUP', {});
   }
 
-  const imgCompany = props.getInfo.data && props.getInfo.data.userInfo.imgCompany;
+  const imgCompany = props.getInfo.data && props.getInfo.data.userInfo.imgsAccount;
   const phoneCompany = props.getInfo.data && props.getInfo.data.userInfo.email;
   const mailCompany = props.getInfo.data && props.getInfo.data.userInfo.phones_main;
 

@@ -12,7 +12,13 @@ import ActionFn from 'store/actions';
 
 
 const MapYandex = (props) => {
+
+
+
+  // resume, vacancies
   const [listings, setListings] = useState(null);
+
+  const [listingsType, setListingsType] = useState('resume');
 
   const mapState = {
     center: [55.739625, 37.5412],
@@ -21,13 +27,21 @@ const MapYandex = (props) => {
 
   useEffect(() => {
 
-    getListing('vacancies').then(res => {
-
+    getListing(props.listingType).then(res => {
       setListings(res);
-
     });
 
   }, []);
+
+  useEffect(() => {
+    getListing(props.listingType).then(res => {
+      setListings(res);
+    });
+    console.log('listings', listings, props.listingType);
+
+  }, [props.listingType])
+
+
 
   const showPopup = (index, idpopup, coords) => {
 
@@ -77,16 +91,20 @@ const MapYandex = (props) => {
           />
           {
             listings && listings.map((item, index) => {
-              const coords = [item.data.coords_ltd, item.data.coords_lng];
+              // const coords = [item.data.coords_ltd, item.data.coords_lng];
+
+              const coords = item.data.coords.split('--');
+              const ltd = coords[1];
+              const lng = coords[2];
               return (
                 <Placemark
                   key={index}
                   idMarket={item.id}
                   onClick={() => {
-                    showPopup(index, 5, coords)
+                    showPopup(index, 5, [ltd, lng])
 
                   }}
-                  defaultGeometry={coords} />
+                  defaultGeometry={[ltd, lng]} />
               )
             })
           }
@@ -100,5 +118,11 @@ const MapYandex = (props) => {
   );
 }
 
+const mapStateToProps = (state) => {
 
-export default connect(null, { ActionFn })(MapYandex);
+  return {
+    listingType: state.listingTypeReducer
+  }
+}
+
+export default connect(mapStateToProps, { ActionFn })(MapYandex);

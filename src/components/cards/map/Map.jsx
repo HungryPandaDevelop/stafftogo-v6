@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
 import { connect } from 'react-redux';
 
-import MapYandex from 'components/map/MapYandex';
+import MapYandex from './MapYandex';
 
 
 
-import ClientPopup from 'components/map/mapPopup/ClientPopup';
-import Route from 'components/map/mapPopup/Route';
+import ClientPopup from './mapPopup/ClientPopup';
+import Route from './mapPopup/Route';
 
 
 

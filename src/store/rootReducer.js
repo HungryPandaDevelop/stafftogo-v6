@@ -20,6 +20,8 @@ import industryBase from "store/reducers/base/industryBase";
 
 import popupMapInfoReducer from "store/reducers/popupMapInfoReducer";
 
+import listingTypeReducer from "store/reducers/listingTypeReducer";
+
 const rootReducer = combineReducers({
   form: formReducer,
   fieldsAuthorization: fieldsAuthorization,
@@ -33,7 +35,8 @@ const rootReducer = combineReducers({
   industryBase: industryBase,
   popupReducer: popupReducer,
   alphabetListPopupReducer: alphabetListPopupReducer,
-  popupMapInfoReducer: popupMapInfoReducer
+  popupMapInfoReducer: popupMapInfoReducer,
+  listingTypeReducer: listingTypeReducer
 });
 
 export default rootReducer;
