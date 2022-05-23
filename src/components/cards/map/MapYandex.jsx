@@ -18,8 +18,6 @@ const MapYandex = (props) => {
   // resume, vacancies
   const [listings, setListings] = useState(null);
 
-  const [listingsType, setListingsType] = useState('resume');
-
   const mapState = {
     center: [55.739625, 37.5412],
     zoom: 12
@@ -34,12 +32,15 @@ const MapYandex = (props) => {
   }, []);
 
   useEffect(() => {
+
     getListing(props.listingType).then(res => {
+      setListings(null);
       setListings(res);
-    });
+    })
+
     console.log('listings', listings, props.listingType);
 
-  }, [props.listingType])
+  }, [props.listingType]);
 
 
 

@@ -1,6 +1,8 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, } from 'react-router-dom';
 
 import { useAuthStatus } from 'hooks/useAuthStatus';
+
+import Switch from 'components/cards/cardsControls/parts/Switch';
 
 const Nav = () => {
 
@@ -17,14 +19,15 @@ const Nav = () => {
   const NavLogIn = () => {
     return (
       <>
-        <div className="cell-stub col-4 col-lg-1"></div>
-        <nav className="nav col-3 col-lg-4">
+        <div className="cell-stub col-3"></div>
+        <nav className="nav col-4">
           <ul>
             <li><Link className={(pathMathRoute('/') ? 'active' : '')} to="/">Главная</Link></li>
             <li><Link className={(pathMathRoute('/cabinet/') ? 'active' : '')} to="/cabinet/">Кабинет</Link></li>
+
+            <Switch />
+
             <li><Link className={(pathMathRoute('/catalog') ? 'active' : '')} to="/catalog">Каталог</Link></li>
-            <li><Link className={(pathMathRoute('/map') ? 'active' : '')} to="/map">Карта</Link></li>
-            <li><Link className={(pathMathRoute('/list') ? 'active' : '')} to="/list">Список</Link></li>
           </ul>
         </nav>
       </>

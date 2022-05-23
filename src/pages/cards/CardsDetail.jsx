@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSingleListing } from 'store/asyncActions/getSingleListing'
 
-const Detail = () => {
+const CardsDetail = () => {
 
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -265,4 +265,4 @@ const Detail = () => {
   )
 }
 
-export default Detail
+export default CardsDetail;

@@ -26,7 +26,7 @@ import {
 } from 'firebase/firestore';
 
 
-import ListItem from 'components/template/ListItem';
+import ListItem from 'components/cards/ListItem';
 
 import TemplateAccount from 'components/template/TemplateAccount';
 

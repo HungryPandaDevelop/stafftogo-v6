@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { getListing } from 'store/asyncActions/getListing';
 
-import ListItem from 'components/template/ListItem';
+import { getAuth } from 'firebase/auth';
 
-const List = () => {
-  const listCategory = "vacancies";
+import ListItem from 'components/cards/ListItem';
+
+const List = (props) => {
+
+  const auth = getAuth();
+
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -14,13 +19,13 @@ const List = () => {
 
   useEffect(() => {
 
-    getListing(listCategory).then(res => {
+    getListing(props.listingType).then(res => {
 
       setListings(res);
       setLoading(false);
 
     });
-  }, []);
+  }, [props.listingType]);
 
   return (
     <div className="content">
@@ -36,7 +41,10 @@ const List = () => {
                     id={listing.id}
                     key={listing.id}
                     imgCompany={listing.imgCompany}
-                    link={`/catalog/${listCategory}/${listing.id}`}
+                    link={`/catalog/${props.listingType}/${listing.id}`}
+                    idCategory={props.listingType}
+                    idElement={listing.id}
+                    uidUser={auth.currentUser}
                   />
                 ))}
               </ul>
@@ -50,4 +58,15 @@ const List = () => {
   )
 }
 
-export default List
+
+
+const mapStateToProps = (state) => {
+
+  return {
+    listingType: state.listingTypeReducer
+  }
+}
+
+
+
+export default connect(mapStateToProps)(List);

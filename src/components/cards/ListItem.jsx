@@ -1,4 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { addLikeAsync } from 'store/asyncActions/addLikeAsync';
 
 
 const ListItem = (props) => {
@@ -6,15 +8,56 @@ const ListItem = (props) => {
     listing,
     onDelete,
     onEdit,
-    link
+    link,
+    uidUser,
+    idElement
   } = props;
 
+  const [liked, setLiked] = useState(false);
+  const [likeMass, setLikeMass] = useState([]);
+  // console.log(listing.idLike)
+
   let normalDate = new Date(listing.timestamp.seconds).toLocaleString('en-GB', { timeZone: 'UTC' });
+
+  //
+
+  useState(() => {
+    setLikeMass(listing.idLike);
+
+    if (listing.idLike && listing.idLike.includes(uidUser.uid)) {
+      setLiked(true);
+
+    }
+  }, []);
+
+  const addLike = () => {
+
+    setLikeMass(likeMass.filter(item => item !== uidUser.uid));
+
+    if (likeMass.includes(uidUser.uid)) {
+      setLiked(false);
+    } else {
+      setLikeMass([...likeMass, uidUser.uid]);
+      setLiked(true);
+    }
+
+    setLikeMass((state) => {
+      addLikeAsync(state, idElement, 'resume');
+      return state;
+    });
+
+  }
+
+
+
+
+
 
 
   return (
     <div className="resume-header vacancies-item">
       <div className="main-grid">
+        <div className={`btn ${liked ? 'btn--orange' : ''}`} onClick={addLike}>Лайк</div>
         <div className="col-12 resume-header-roof">
           <div className="resume-update"><span>Резюме обновлено: {normalDate}</span></div>
         </div>
@@ -34,9 +77,9 @@ const ListItem = (props) => {
         <div className="col-5">
           <div className="resume-info">
             <h2>
-              {/* <Link to={link}>
+              <Link to={link}>
                 {listing.card_name}
-              </Link> */}
+              </Link>
             </h2>
             <div className="vacancies-price">
               {listing.salary_priceFrom && `Р ${listing.salary_priceFrom}`}

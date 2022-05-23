@@ -31,15 +31,15 @@ import ResumeNew from 'pages/cabinet/applicants/resume/ResumeNew';
 import ResumeEdit from 'pages/cabinet/applicants/resume/ResumeEdit';
 // Страницы кабинет Соискателя
 
+import Liked from 'pages/cabinet/applicants/Liked';
+
 // Страницы Елементов Вакансии\ Резюме
 import Catalog from 'pages/cards/Catalog';
-// import List from 'pages/catalog/List';
+import CardsDetail from 'pages/cards/CardsDetail';
 // Страницы Елементов Вакансии\ Резюме
 
 
-// import Catalog from 'pages/Catalog';
-// import ListOld from 'pages/List';
-// import Detail from 'pages/Detail';
+
 import Map from 'pages/cards/MapGo';
 
 
@@ -67,6 +67,9 @@ const App = () => {
               <Route path='/cabinet/resume-new' element={<ResumeNew/>}></Route>
               <Route path='/cabinet/resume-edit/:elementId' element={<ResumeEdit/>}></Route>
 
+
+              <Route path='/cabinet/liked/' element={<Liked/>}></Route>
+
             </Route>
           {/*  Страницы кабинет  */}
 
@@ -82,6 +85,7 @@ const App = () => {
 
           <Route path='/catalog' element={<Catalog/>}></Route>
           <Route path='/map' element={<Map/>}></Route>
+          <Route path='/catalog/:catagoryName/:elementId' element={<CardsDetail/>}></Route>
 
 
         </Routes>

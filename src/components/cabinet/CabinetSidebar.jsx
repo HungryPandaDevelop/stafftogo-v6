@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { getAuth } from 'firebase/auth';
 
@@ -46,7 +46,7 @@ const CabinetSidebar = () => {
   const NameMassApplicants = [
     ['Мой кабинет', 'account', ''],
     ['Мои резюме', 'vacancies', 'resume'],
-    ['Мои отклики', 'vacancies', ''],
+    ['Мне понравилось', 'score', 'liked'],
     // ['Мои реквизиты', 'requisites', 'requisites'],
     // ['Мои отклики', 'respond', 'responses'],
     // ['Мои кандидаты', 'candidates', 'candidates'],

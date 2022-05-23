@@ -1,25 +1,24 @@
-import { useState, useEffect } from 'react';
+
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 
 const Switch = (props) => {
-  const [switchState, setSwithState] = useState(false);
-  const changeTypeListing = () => {
-    setSwithState(!switchState);
 
-  }
-  useEffect(() => {
-    if (switchState) {
+  const changeTypeListing = () => {
+
+    if (props.listingType === 'resume') {
       props.ActionFn('CHANGE_LISTING', 'vacancies');
-    } else {
+    }
+    else {
       props.ActionFn('CHANGE_LISTING', 'resume');
     }
-  }, [switchState])
+  }
+
 
   return (
     <div className="controls-contaiener col-4 vertical-align">
       <div
-        className={`switch-container ${switchState ? 'switch-btn--active' : ''}`}
+        className={`switch-container ${props.listingType === 'vacancies' ? 'switch-btn--active' : ''}`}
         onClick={changeTypeListing}
       >
         <span>Резюме</span>
