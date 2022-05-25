@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { reduxForm } from 'redux-form';
+import { reduxForm, SubmissionError, Field } from 'redux-form';
 
 import RenderTitle from './fields/RenderTitle';
 
@@ -29,20 +29,29 @@ import RenderInputSelectTrue from './fields/RenderInputSelectTrue'; // поле 
 import RenderInputCoords from './fields/RenderInputCoords'; // поле с селект
 
 
-
 // --------------------------------------------------------------------
-
-
 
 const TemplateForm = (props) => {
   //console.log(props)
-  const { handleSubmit, objFields, orderFields, btnSaveText, onSubmitProps, } = props;
+  const { handleSubmit, objFields, orderFields, btnSaveText, onSubmitProps } = props;
 
-
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
   const onSubmit = (formData) => {
-    // console.log('save in formData', formData)
-    onSubmitProps();
+    console.log('save in formData', formData)
+
+    // return sleep(1).then(() => {
+    //   // simulate server latency
+    //   if (formData && formData.name.length < 6) {
+    //     throw new SubmissionError({
+    //       name: 'User does not exist',
+    //       email: 'User does not exist',
+    //     });
+    //   }
+    // });
+
+    //onSubmitProps();
+
   }
 
 
@@ -60,6 +69,7 @@ const TemplateForm = (props) => {
               label={obj.label}
               labelSecond={obj.labelSecond}
               disabled={obj.disabled}
+              validate={obj.validate}
             />
           );
         case 'coords':
@@ -98,14 +108,22 @@ const TemplateForm = (props) => {
         case 'list':
           return RenderInputList(obj.name, obj.label, obj.labelSecond, obj.options,);
         case 'password':
-          return RenderInputPassword(obj.name, obj.placeholder, obj.label);
+          return (
+            <RenderInputPassword
+              name={obj.name}
+              placeholder={obj.placeholder}
+              label={obj.label}
+              validate={obj.validate}
+
+            />
+          );
+
         case 'switch':
           return (
             <RenderInputSwitch
               name={obj.name}
               label={obj.label}
               options={obj.options}
-
             />
           );
         case 'additional':
@@ -153,6 +171,7 @@ const TemplateForm = (props) => {
     )
   }
 
+
   return (
     <form
       className="form"
@@ -173,9 +192,11 @@ const TemplateForm = (props) => {
   )
 }
 
+
+
 export default reduxForm({
   form: 'singleInput',
-  enableReinitialize: true
+  enableReinitialize: true,
 })(TemplateForm);
 
 

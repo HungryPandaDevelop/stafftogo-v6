@@ -278,3 +278,16 @@ textarea{
   width: 0;height: 0;
 
 }
+
+.error-input
+{
+  border-color: red;
+}
+.error-hint
+{
+  display: inline-block;
+  color: red;
+  position: relative;
+  top: -15px;
+  left: 15px;
+}

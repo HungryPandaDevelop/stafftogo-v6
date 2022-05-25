@@ -14,6 +14,7 @@ const ListItem = (props) => {
   } = props;
 
   const [liked, setLiked] = useState(false);
+  const [invite, setInvite] = useState(false);
   const [likeMass, setLikeMass] = useState([]);
   // console.log(listing.idLike)
 
@@ -50,6 +51,11 @@ const ListItem = (props) => {
 
 
 
+  const addInvite = () => {
+
+
+
+  }
 
 
 
@@ -58,6 +64,7 @@ const ListItem = (props) => {
     <div className="resume-header vacancies-item">
       <div className="main-grid">
         <div className={`btn ${liked ? 'btn--orange' : ''}`} onClick={addLike}>Лайк</div>
+        <div className={`btn ${invite ? 'btn--orange' : ''}`} onClick={addInvite} >Пригласить</div>
         <div className="col-12 resume-header-roof">
           <div className="resume-update"><span>Резюме обновлено: {normalDate}</span></div>
         </div>
