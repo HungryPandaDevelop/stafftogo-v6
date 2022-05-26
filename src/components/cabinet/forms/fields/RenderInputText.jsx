@@ -2,20 +2,19 @@ import { Field } from 'redux-form';
 
 
 const TempateInputText = (props) => {
-  const { input, placeholder, label, labelSecond, disabled, meta: { touched, error } } = props;
+  const { input, placeholder, label, labelSecond, disabled, errorOn, meta: { touched, error } } = props;
 
   return (
     <div className="form-line">
-
       {label && <label><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
       <input
         {...input}
         type="text"
         placeholder={placeholder}
-        className={`input-decorate ${touched && error && 'error-input'}`}
+        className={`input-decorate ${errorOn && touched && error && 'error-input'}`}
         disabled={`${disabled === 0 ? "disabled" : ""}`}
       />
-      {touched && error && <span className='error-hint'>{error}</span>}
+      {errorOn && touched && error && <span className='error-hint'>{error}</span>}
 
     </div>
   );
@@ -23,13 +22,14 @@ const TempateInputText = (props) => {
 
 
 
-const RenderInputText = ({ name, placeholder, label, validate }) => {
+const RenderInputText = ({ name, placeholder, label, validate, errorOn }) => {
   return <Field
     name={name}
     label={label}
     placeholder={placeholder}
     component={TempateInputText}
     validate={validate}
+    errorOn={errorOn}
   />;
 }
 

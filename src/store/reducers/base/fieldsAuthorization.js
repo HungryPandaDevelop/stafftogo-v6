@@ -1,7 +1,9 @@
+import { required, minLength,mailCheck } from 'components/cabinet/forms/validator';
+
 export default function(){
   return {
     order: ["email","password",],
-    email: { name: "email", label: "Почта пользователя", placeholder: "Почта пользователя", type:"text" },
-    password: { name: "password", label: "Пароль", placeholder: "Введите пароль", type:"password"},
+    email: { name: "email", label: "Почта пользователя", placeholder: "Почта пользователя", type:"text",validate: [required,minLength,mailCheck]  },
+    password: { name: "password", label: "Пароль", placeholder: "Введите пароль", type:"password",validate: [required,minLength] },
   }
 }

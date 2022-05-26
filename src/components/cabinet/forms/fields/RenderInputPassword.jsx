@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Field } from 'redux-form';
 
-const TemplateFieldPassword = ({ input, label, placeholder, meta: { touched, error } }) => {
+const TemplateFieldPassword = ({ input, label, placeholder, errorOn, meta: { touched, error } }) => {
 
   const [showPass, setShowPass] = useState(false);
 
@@ -14,16 +14,16 @@ const TemplateFieldPassword = ({ input, label, placeholder, meta: { touched, err
           type={showPass ? ("text") : ("password")}
           {...input}
           placeholder={placeholder}
-          className={`input-decorate ${touched && error && 'error-input'}`}
+          className={`input-decorate ${errorOn && touched && error && 'error-input'}`}
         />
         <i className="view-ico" data-visibility={showPass} onClick={() => { setShowPass((prevState) => !prevState) }}></i>
       </div>
-      {touched && error && <span className='error-hint'>{error}</span>}
+      {errorOn && touched && error && <span className='error-hint'>{error}</span>}
     </div>
   )
 }
 
-const RenderInputPassword = ({ name, placeholder, label, errors, validate }) => {
+const RenderInputPassword = ({ name, placeholder, label, errors, validate, errorOn }) => {
   return <Field
     name={name}
     label={label}
@@ -31,6 +31,7 @@ const RenderInputPassword = ({ name, placeholder, label, errors, validate }) => 
     component={TemplateFieldPassword}
     errors={errors}
     validate={validate}
+    errorOn={errorOn}
   />;
 }
 

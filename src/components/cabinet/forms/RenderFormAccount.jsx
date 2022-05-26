@@ -1,6 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
 
-import { reduxForm, SubmissionError, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 import RenderTitle from './fields/RenderTitle';
 
@@ -35,25 +35,20 @@ const TemplateForm = (props) => {
   //console.log(props)
   const { handleSubmit, objFields, orderFields, btnSaveText, onSubmitProps } = props;
 
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+  const [errorOn, setErrorOn] = useState(false);
+
 
   const onSubmit = (formData) => {
     console.log('save in formData', formData)
 
-    // return sleep(1).then(() => {
-    //   // simulate server latency
-    //   if (formData && formData.name.length < 6) {
-    //     throw new SubmissionError({
-    //       name: 'User does not exist',
-    //       email: 'User does not exist',
-    //     });
-    //   }
-    // });
-
-    //onSubmitProps();
-
+    onSubmitProps();
   }
 
+  const showErr = () => {
+
+    setErrorOn(true);
+    setTimeout(() => { setErrorOn(false); }, 2500);
+  }
 
   const RenderFields = (obj, index) => {
 
@@ -70,6 +65,7 @@ const TemplateForm = (props) => {
               labelSecond={obj.labelSecond}
               disabled={obj.disabled}
               validate={obj.validate}
+              errorOn={errorOn}
             />
           );
         case 'coords':
@@ -114,7 +110,7 @@ const TemplateForm = (props) => {
               placeholder={obj.placeholder}
               label={obj.label}
               validate={obj.validate}
-
+              errorOn={errorOn}
             />
           );
 
@@ -186,7 +182,7 @@ const TemplateForm = (props) => {
         </div>
       ))}
 
-      <button className="btn btn--green">{btnSaveText}</button>
+      <button onClick={showErr} className="btn btn--green">{btnSaveText}</button>
 
     </form >
   )

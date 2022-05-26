@@ -24,7 +24,17 @@ export const authAccount =  async (formData) => {
 
 
     } catch (error) {
-      toast.error('Ошибка авторизации')
+    
+      if(error.code === 'auth/user-not-found'){
+        toast.error('Пользователь не существует');
+      }
+      else if(error.code === 'auth/wrong-password'){
+        toast.error('Неправильный пароль');
+      }
+      else{
+        toast.error('Ошибка авторизации');
+      }
+      
     }
 
   }

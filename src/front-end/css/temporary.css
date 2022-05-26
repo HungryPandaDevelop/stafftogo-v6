@@ -279,11 +279,12 @@ textarea{
 
 }
 
-.error-input
+ .error-input
 {
   border-color: red;
 }
-.error-hint
+
+ .error-hint
 {
   display: inline-block;
   color: red;
