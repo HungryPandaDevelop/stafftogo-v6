@@ -16,7 +16,7 @@ const Switch = (props) => {
 
 
   return (
-    <div className="controls-contaiener col-4 vertical-align">
+    <>
       <div
         className={`switch-container ${props.listingType === 'vacancies' ? 'switch-btn--active' : ''}`}
         onClick={changeTypeListing}
@@ -27,7 +27,7 @@ const Switch = (props) => {
         </div>
         <span>Вакансии</span>
       </div>
-    </div>
+    </>
   )
 }
 

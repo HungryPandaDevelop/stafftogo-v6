@@ -59,7 +59,7 @@ function FeedbackHome() {
               <input className="phone-mask input-decorate col-6 require" type="text" placeholder="+7 (___) ___ - __ - __" />
               <input className="input-decorate check-mail col-6" type="email" placeholder="Email" />
 
-              <select className="style-select" >
+              {/* <select className="style-select" >
                 <option>lorem</option>
                 <option>ipusm</option>
                 <option>scientist</option>
@@ -73,7 +73,7 @@ function FeedbackHome() {
                 <option>scientist</option>
                 <option>blog</option>
                 <option>red</option>
-              </select>
+              </select> */}
 
               <textarea className="input-decorate col-12" placeholder="Комментарий"></textarea>
               <div className="checkbox col-12">

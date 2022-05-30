@@ -13,6 +13,7 @@ const List = (props) => {
   const auth = getAuth();
 
   const [listings, setListings] = useState(null);
+
   const [loading, setLoading] = useState(true);
 
   const params = useParams();
@@ -20,41 +21,37 @@ const List = (props) => {
   useEffect(() => {
 
     getListing(props.listingType).then(res => {
-
       setListings(res);
       setLoading(false);
-
     });
+
   }, [props.listingType]);
 
-  return (
-    <div className="content">
 
-      <div className="main-grid">
-        <div className="col-12">
-          {loading ? 'loading' : listings && listings.length > 0 ? (
-            <>
-              <ul className='ln'>
-                {listings.map((listing) => (
-                  <ListItem
-                    listing={listing.data}
-                    id={listing.id}
-                    key={listing.id}
-                    imgCompany={listing.imgCompany}
-                    link={`/catalog/${props.listingType}/${listing.id}`}
-                    idCategory={props.listingType}
-                    idElement={listing.id}
-                    uidUser={auth.currentUser}
-                  />
-                ))}
-              </ul>
-            </>
-          ) : (
-            <p>Нет элементов {params.catagoryName}</p>
-          )}
-        </div>
-      </div>
-    </div>
+
+  return (
+    <>
+      {loading ? 'loading' : listings && listings.length > 0 ? (
+
+        <ul className='ln'>
+          {listings.map((listing) => (
+            <ListItem
+              listing={listing.data}
+              id={listing.id}
+              key={listing.id}
+              imgCompany={listing.imgCompany}
+              link={`/catalog/${props.listingType}/${listing.id}`}
+              idCategory={props.listingType}
+              idElement={listing.id}
+              uidUser={auth.currentUser}
+
+            />
+          ))}
+        </ul>
+      ) : (
+        <p>Нет элементов {params.catagoryName}</p>
+      )}
+    </>
   )
 }
 

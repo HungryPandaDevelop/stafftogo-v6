@@ -28,7 +28,9 @@ const CardsControls = (props) => {
       <div className="controls-map">
         <div className="main-grid controls-line controls-line--first">
           <Nav />
-          <Switch />
+          <div className="controls-contaiener col-4 vertical-align">
+            <Switch />
+          </div>
         </div>
         <div className="main-grid controls-line">
           <div className="btn-container vertical-align col-12" >

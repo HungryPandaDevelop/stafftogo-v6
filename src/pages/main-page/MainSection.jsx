@@ -12,18 +12,6 @@ const MainSection = () => {
                   <div>Staff2Go - профессинальная платформа для поиска временной или постоянной работы, а также найма сотрудников для решения любой задачи.</div>
                 </div>
               </div>
-              <div className="main_home-item flex-align">
-                <div className="main_home-content">
-                  <h2>Поиск<br /> специалистов<br /> в сфере HoReCa</h2>
-                  <div>Staff2Go - профессинальная платформа для поиска временной или постоянной работы, а также найма сотрудников для решения любой задачи.</div>
-                </div>
-              </div>
-              <div className="main_home-item flex-align">
-                <div className="main_home-content">
-                  <h2>Поиск<br /> специалистов<br /> в сфере HoReCa</h2>
-                  <div>Staff2Go - профессинальная платформа для поиска временной или постоянной работы, а также найма сотрудников для решения любой задачи.</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

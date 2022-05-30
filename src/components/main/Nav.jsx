@@ -2,7 +2,7 @@ import { Link, useLocation, } from 'react-router-dom';
 
 import { useAuthStatus } from 'hooks/useAuthStatus';
 
-import Switch from 'components/cards/cardsControls/parts/Switch';
+import Sigin from './Sigin';
 
 const Nav = () => {
 
@@ -19,17 +19,7 @@ const Nav = () => {
   const NavLogIn = () => {
     return (
       <>
-        <div className="cell-stub col-3"></div>
-        <nav className="nav col-4">
-          <ul>
-            <li><Link className={(pathMathRoute('/') ? 'active' : '')} to="/">Главная</Link></li>
-            <li><Link className={(pathMathRoute('/cabinet/') ? 'active' : '')} to="/cabinet/">Кабинет</Link></li>
-
-            <Switch />
-
-            <li><Link className={(pathMathRoute('/catalog') ? 'active' : '')} to="/catalog">Каталог</Link></li>
-          </ul>
-        </nav>
+        <Sigin />
       </>
     )
   }

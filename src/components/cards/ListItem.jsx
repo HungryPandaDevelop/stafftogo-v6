@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { addLikeAsync } from 'store/asyncActions/addLikeAsync';
 
 
+import { getListing } from 'store/asyncActions/getListing';
+
 const ListItem = (props) => {
   const {
     listing,
@@ -10,7 +12,7 @@ const ListItem = (props) => {
     onEdit,
     link,
     uidUser,
-    idElement
+    idElement,
   } = props;
 
   const [liked, setLiked] = useState(false);
@@ -53,8 +55,14 @@ const ListItem = (props) => {
 
   const addInvite = () => {
 
+    console.log('invite',);
+
+    getListing('vacancies', 'user').then(res => {
+
+      console.log('res', res[0].id);
 
 
+    });
   }
 
 
@@ -63,8 +71,6 @@ const ListItem = (props) => {
   return (
     <div className="resume-header vacancies-item">
       <div className="main-grid">
-        <div className={`btn ${liked ? 'btn--orange' : ''}`} onClick={addLike}>Лайк</div>
-        <div className={`btn ${invite ? 'btn--orange' : ''}`} onClick={addInvite} >Пригласить</div>
         <div className="col-12 resume-header-roof">
           <div className="resume-update"><span>Резюме обновлено: {normalDate}</span></div>
         </div>
@@ -108,6 +114,8 @@ const ListItem = (props) => {
               <li><a href="/"><i className="marker-ico--black"></i><span>Показать на карте</span></a></li>
             </ul>
             <div className="btn-container">
+              <div className={`btn ${liked ? 'btn--orange' : ''}`} onClick={addLike}>Лайк</div>
+              <div className={`btn ${invite ? 'btn--orange' : ''}`} onClick={addInvite} >Пригласить</div>
               {onEdit && (
                 <div
                   className='btn btn--orange btn--smaill ico-in'
