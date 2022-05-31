@@ -11,14 +11,13 @@ import { toast } from 'react-toastify';
 
 
 
-export const addInviteAsync = async (addInvite, cardsId, name) => {
+export const addInviteAsync = async (idInvite, cardsId, name) => {
 
-  console.log('add addInviteAsync')
     try {
 
       const vacanciesRef = doc(db, name, cardsId);
 
-      await updateDoc(vacanciesRef, {'addInvite': addInvite});
+      await updateDoc(vacanciesRef, {'idInvite': idInvite});
 
       toast.success('Данные обновлены')
     } catch (error) {

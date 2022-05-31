@@ -30,6 +30,7 @@ const HeadProfile = () => {
     getUserInfo().then(res => {
       setUserInfo(res.data);
       console.log(res.data)
+
       if (res.data.typeCabinet === 'employers') {
         setTypeList('vacancies');
         setTypeName('Вакансии');
@@ -49,8 +50,6 @@ const HeadProfile = () => {
         return state;
       });
     });
-
-
 
   }, []);
 

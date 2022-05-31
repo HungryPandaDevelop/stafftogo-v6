@@ -22,6 +22,8 @@ import popupMapInfoReducer from "store/reducers/popupMapInfoReducer";
 
 import listingTypeReducer from "store/reducers/listingTypeReducer";
 
+
+
 const rootReducer = combineReducers({
   form: formReducer,
   fieldsAuthorization: fieldsAuthorization,
@@ -36,7 +38,7 @@ const rootReducer = combineReducers({
   popupReducer: popupReducer,
   alphabetListPopupReducer: alphabetListPopupReducer,
   popupMapInfoReducer: popupMapInfoReducer,
-  listingTypeReducer: listingTypeReducer
+  listingTypeReducer: listingTypeReducer,
 });
 
 export default rootReducer;

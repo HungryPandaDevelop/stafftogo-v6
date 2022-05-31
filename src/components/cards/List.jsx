@@ -8,6 +8,8 @@ import { getAuth } from 'firebase/auth';
 
 import ListItem from 'components/cards/ListItem';
 
+
+
 const List = (props) => {
 
   const auth = getAuth();
@@ -16,9 +18,16 @@ const List = (props) => {
 
   const [loading, setLoading] = useState(true);
 
+
   const params = useParams();
 
   useEffect(() => {
+
+    getListing('vacancies', 'user').then(res => {
+
+      setListings(res);
+      setLoading(false);
+    });
 
     getListing(props.listingType).then(res => {
       setListings(res);
@@ -27,10 +36,19 @@ const List = (props) => {
 
   }, [props.listingType]);
 
-
+  // getListing('vacancies', 'user').then(res => {
+  //   // setInviteList(res);
+  // });
 
   return (
     <>
+      <div>
+        <h4>
+          Мои вакансии
+        </h4>
+      </div>
+
+
       {loading ? 'loading' : listings && listings.length > 0 ? (
 
         <ul className='ln'>

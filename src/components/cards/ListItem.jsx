@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
 import { addLikeAsync } from 'store/asyncActions/addLikeAsync';
+import { addInviteAsync } from 'store/asyncActions/addInviteAsync';
 
 
 import { getListing } from 'store/asyncActions/getListing';
@@ -16,8 +18,15 @@ const ListItem = (props) => {
   } = props;
 
   const [liked, setLiked] = useState(false);
-  const [invite, setInvite] = useState(false);
   const [likeMass, setLikeMass] = useState([]);
+
+
+  // const [invited, setInvited] = useState(false);
+  // const [inviteMass, setInviteMass] = useState([]);
+
+  // const [inviteList, setInviteList] = useState([]);
+
+
   // console.log(listing.idLike)
 
   let normalDate = new Date(listing.timestamp.seconds).toLocaleString('en-GB', { timeZone: 'UTC' });
@@ -25,12 +34,19 @@ const ListItem = (props) => {
   //
 
   useState(() => {
+    // listing, data этого элемента
     setLikeMass(listing.idLike);
+
+    // setInviteMass(listing.idInvite);
 
     if (listing.idLike && listing.idLike.includes(uidUser.uid)) {
       setLiked(true);
-
     }
+
+    // getListing('vacancies', 'user').then(res => {
+    //   setInviteList(res);
+    // });
+
   }, []);
 
   const addLike = () => {
@@ -53,17 +69,52 @@ const ListItem = (props) => {
 
 
 
-  const addInvite = () => {
+  // const RenderInviteList = () => {
 
-    console.log('invite',);
+  //   return (
+  //     <div className="inviteList">
+  //       {inviteList && inviteList.map((item) => {
+  //         let setActive = '';
+  //         console.log(listing);
+  //         // listing && listing.idInvite.map(el => {
+  //         //   if (el === item.id) {
+  //         //     setActive = 'active';
+  //         //   }
+  //         // })
+  //         // { console.log(listing.idInvite) }
+  //         return (
+  //           <div
+  //             key={item.id}
+  //             id={item.id}
+  //             onClick={(e) => addInvite(e)}
+  //             className={`invite-list ${setActive ? 'active' : ''}`}
+  //           >
+  //             {item.data.card_name}
+  //           </div>
+  //         )
+  //       })}
+  //     </div>
+  //   )
+  // }
 
-    getListing('vacancies', 'user').then(res => {
+  // const addInvite = (e) => {
 
-      console.log('res', res[0].id);
+  //   const tempId = e.target.id;
 
+  //   if (inviteMass.includes(tempId)) {
+  //     setInviteMass(inviteMass.filter(item => item !== tempId));
 
-    });
-  }
+  //   } else {
+  //     setInviteMass([...inviteMass, tempId]);
+  //   }
+
+  //   setInviteMass((state) => {
+  //     console.log('invite', state);
+  //     addInviteAsync(state, idElement, 'resume');
+  //     return state;
+  //   });
+
+  // }
 
 
 
@@ -102,6 +153,8 @@ const ListItem = (props) => {
               {listing.responsibilities}
             </div>
           </div>
+
+
         </div>
 
         <div className="col-5">
@@ -113,9 +166,12 @@ const ListItem = (props) => {
               {listing.userInfo && <li><a href="/"><i className="mail-ico--black"></i><span>{listing.userInfo.email}</span></a></li>}
               <li><a href="/"><i className="marker-ico--black"></i><span>Показать на карте</span></a></li>
             </ul>
+            {/* RenderInviteList */}
+            {/* {RenderInviteList()} */}
+            {/* RenderInviteList*/}
             <div className="btn-container">
               <div className={`btn ${liked ? 'btn--orange' : ''}`} onClick={addLike}>Лайк</div>
-              <div className={`btn ${invite ? 'btn--orange' : ''}`} onClick={addInvite} >Пригласить</div>
+              <div className='btn'  >Пригласить</div>
               {onEdit && (
                 <div
                   className='btn btn--orange btn--smaill ico-in'
